@@ -1,7 +1,10 @@
-import React from 'react'
+
+import HeroSlider from './HeroSlider/HeroSlider'
 
 export default function Hero() {
   return (
-    <div>Hero</div>
+    <div>
+      <HeroSlider/>
+    </div>
   )
 }
