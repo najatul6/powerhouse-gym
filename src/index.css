@@ -1,13 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   font-family: "Playwrite DE Grund", cursive;
 }
 
-span{
+span {
   font-family: inherit;
   font-weight: inherit;
+}
+
+.blueShadow {
+  box-shadow: 3px 3px 0 0 #60a5fa;
+}
+.blueShadow:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 0 #60a5fa;
 }
