@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <div className='relative'>
       <HeroSlider/>
-      <div className='absolute top-0 bottom-0 left-0 right-0 z-10 bg-gradient-to-r from-[#1e293b8f] to-[#02061797]'>
+      <div className='absolute top-0 bottom-0 left-0 right-0 z-10 bg-gradient-to-r from-[#1e293b8f] to-[#02061797] py-5'>
       <HeroContent/>
       </div>
     </div>
