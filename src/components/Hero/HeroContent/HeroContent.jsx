@@ -2,8 +2,8 @@ import Button from "../../Shared/Button/Button";
 
 export default function HeroContent() {
   return (
-    <div className="h-full flex flex-col gap-4 lg:gap-10 items-center justify-center text-center max-w-[800px] w-full mx-auto p-4">
-      <div className="flex flex-col gap-2 md:gap-4 ">
+    <div className="h-full flex flex-col sm:gap-2 gap-4 lg:gap-10 items-center justify-center text-center max-w-[800px] w-full mx-auto p-4">
+      <div className="flex flex-col gap-1 md:gap-4 ">
         <p className="font-bold">IT&prime;S TIME TO GET</p>
         <h2 className="uppercase font-semibold text-xl md:text-4xl lg:text-5xl">
           <span className="text-blue-400">Power</span> House{" "}
