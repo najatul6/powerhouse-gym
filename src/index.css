@@ -6,3 +6,8 @@
 *{
   font-family: "Playwrite DE Grund", cursive;
 }
+
+span{
+  font-family: inherit;
+  font-weight: inherit;
+}

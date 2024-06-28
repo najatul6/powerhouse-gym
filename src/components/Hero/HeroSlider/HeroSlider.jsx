@@ -1,14 +1,14 @@
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 // import required modules
-import { Autoplay } from 'swiper/modules';
-
+import { Autoplay } from "swiper/modules";
+import { images } from "../../../utils/images";
 
 export default function HeroSlider() {
   return (
@@ -20,19 +20,11 @@ export default function HeroSlider() {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        
-        
         modules={[Autoplay]}
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        {images?.map((banner) => (
+          <SwiperSlide key={banner?.id}><img src={banner?.src} alt={banner?.alt} className="w-full h-full md:h-96 lg:h-screen bg-cover"/></SwiperSlide>
+        ))}
       </Swiper>
     </>
   );
