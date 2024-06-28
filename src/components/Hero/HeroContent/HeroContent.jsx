@@ -5,7 +5,7 @@ export default function HeroContent() {
     <div className="h-full flex flex-col gap-4 lg:gap-10 items-center justify-center text-center lg:max-w-[800px] w-full mx-auto p-5">
       <div className="flex flex-col gap-1 md:gap-4 ">
         <p className="font-bold">IT&prime;S TIME TO GET</p>
-        <h2 className="uppercase font-semibold text-lg md:text-4xl lg:text-5xl">
+        <h2 className="uppercase font-semibold text-md md:text-4xl lg:text-5xl">
           <span className="text-blue-400">Power</span> House{" "}
           <span className="text-blue-400">gym</span>
         </h2>
