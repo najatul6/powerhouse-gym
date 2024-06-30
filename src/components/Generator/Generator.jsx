@@ -6,11 +6,11 @@ import Title from "../Shared/Header/Title";
 import { useState } from "react";
 
 export default function Generator() {
-  const [showModal, setShowModal]=useState(false)
-  const [poison, setPoison]=useState('individual')
-  const [muscles, setMuscles]=useState([])
-  const [goals, setGoals]=useState('strength_power')
-  function toggleModal(){
+  const [showModal, setShowModal] = useState(false);
+  const [poison, setPoison] = useState("individual");
+  const [muscles, setMuscles] = useState([]);
+  const [goal, setGoal] = useState("strength_Power");
+  function toggleModal() {
     setShowModal(!showModal);
   }
   return (
@@ -28,7 +28,10 @@ export default function Generator() {
         {Object.keys(WORKOUTS).map((type, typeIndex) => {
           return (
             <Button
-              customClass={"p-3 hover:border-blue-600 capitalize"}
+              onClick={() => setPoison(type)}
+              customClass={`p-3 hover:border-blue-600 capitalize ${
+                type === poison ? "border-blue-600" : "border-blue-300"
+              }`}
               key={typeIndex}
               text={type.replaceAll("_", " ")}
             />
@@ -42,16 +45,15 @@ export default function Generator() {
         title={"Lock on targets"}
         description={"Select the muscles judged for annihilation."}
       />
-      <div className="flex flex-col border-2 rounded-lg border-blue-400 border-solid bg-slate-950 font-semibold duration-200">
-        <button onClick={toggleModal} className="relative flex justify-center items-center p-3">
+      <div className="flex flex-col border-2 rounded-lg border-blue-300 border-solid bg-slate-950 font-semibold duration-200">
+        <button
+          onClick={toggleModal}
+          className="relative flex justify-center items-center p-3"
+        >
           <p>Select muscle groups</p>
-          <IoCaretDown className="absolute right-3 top-1/2 -translate-y-1/2"/>
+          <IoCaretDown className="absolute right-3 top-1/2 -translate-y-1/2" />
         </button>
-        {
-          showModal &&(
-            <div>Fuck you</div>
-          )
-        }
+        {showModal && <div></div>}
       </div>
 
       {/* Section 03   */}
@@ -61,18 +63,23 @@ export default function Generator() {
         description={"Select your ultimate objective."}
       />
       <div className="grid grid-cols-3 gap-4">
-        {Object.keys(SCHEMES).map((schemes, schemesIndex) => {
+        {Object.keys(SCHEMES).map((scheme, schemesIndex) => {
           return (
             <Button
-              customClass={"py-3 hover:border-blue-600 capitalize"}
+              onClick={() => setGoal(scheme)}
+
+              customClass={`py-3 hover:border-blue-600 capitalize ${scheme===goal?'border-blue-600':'border-blue-300'}`}
               key={schemesIndex}
-              text={schemes.replaceAll("_", " ")}
+              text={scheme.replaceAll("_", " ")}
             />
           );
         })}
       </div>
       <div className="flex justify-center items-center">
-      <Button customClass={"blueShadow px-8 py-4"} text="Formulate" />
+        <Button
+          customClass={"blueShadow px-8 py-4 border-blue-400"}
+          text="Formulate"
+        />
       </div>
     </SectionWrapper>
   );
