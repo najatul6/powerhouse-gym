@@ -13,6 +13,20 @@ export default function Generator() {
   function toggleModal() {
     setShowModal(!showModal);
   }
+  function updateMuscles(muscleGroup) {
+    if (muscles?.length > 2) {
+      return;
+    }
+    if (poison !== "individual") {
+      setMuscles([muscleGroup]);
+      return;
+    }
+    if (muscles.includes(muscleGroup)) {
+      setMuscles(muscles.filter((val) => val !== muscleGroup));
+      return;
+    }
+    setMuscles([...muscles, muscleGroup]);
+  }
   return (
     <SectionWrapper
       header={"Generate your work"}
@@ -48,7 +62,9 @@ export default function Generator() {
       <div className="flex flex-col border-2 rounded-lg border-blue-300 border-solid bg-slate-950 font-semibold duration-200">
         <button
           onClick={toggleModal}
-          className="relative flex justify-center items-center p-3"
+          className={`relative flex justify-center items-center p-3 ${
+            showModal && "border-b-2"
+          }`}
         >
           <p>Select muscle groups</p>
           <IoCaretDown className="absolute right-3 top-1/2 -translate-y-1/2" />
@@ -57,18 +73,21 @@ export default function Generator() {
           <div className="flex flex-col px-3 pb-3">
             {(poison === "individual"
               ? WORKOUTS[poison]
-              : Object.keys(WORKOUTS[poison])).map((mascleGroup,muscleGruopIndex)=>{
-                return(
-                  <Button
-                    onClick={() => setMuscles([...muscles, mascleGroup])}
-                    customClass={`py-3 hover:border-blue-600 capitalize ${
-                      muscles.includes(mascleGroup)? "border-blue-600" : "border-blue-300"
-                    }`}
-                    key={muscleGruopIndex}
-                    text={mascleGroup}
-                  />
-                )
-              })}
+              : Object.keys(WORKOUTS[poison])
+            ).map((muscleGroup, muscleGroupIndex) => {
+              return (
+                <Button
+                  onClick={() => {
+                    
+                  }}
+                  // customClass={`py-3 hover:text-blue-400 duration-200 capitalize ${
+                  //   muscles.includes(muscleGroup) ? "text-blue-400" : " "
+                  // }`}
+                  key={muscleGroupIndex}
+                  text={muscleGroup}
+                />
+              );
+            })}
           </div>
         )}
       </div>
