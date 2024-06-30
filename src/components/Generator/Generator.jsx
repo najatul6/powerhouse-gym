@@ -29,7 +29,7 @@ export default function Generator() {
           return (
             <Button
               onClick={() => setPoison(type)}
-              customClass={`p-3 hover:border-blue-600 capitalize ${
+              customClass={`p-3 hover:border-blue-600 capitalize border-2 ${
                 type === poison ? "border-blue-600" : "border-blue-300"
               }`}
               key={typeIndex}
@@ -53,7 +53,24 @@ export default function Generator() {
           <p>Select muscle groups</p>
           <IoCaretDown className="absolute right-3 top-1/2 -translate-y-1/2" />
         </button>
-        {showModal && <div></div>}
+        {showModal && (
+          <div className="flex flex-col px-3 pb-3">
+            {(poison === "individual"
+              ? WORKOUTS[poison]
+              : Object.keys(WORKOUTS[poison])).map((mascleGroup,muscleGruopIndex)=>{
+                return(
+                  <Button
+                    onClick={() => setMuscles([...muscles, mascleGroup])}
+                    customClass={`py-3 hover:border-blue-600 capitalize ${
+                      muscles.includes(mascleGroup)? "border-blue-600" : "border-blue-300"
+                    }`}
+                    key={muscleGruopIndex}
+                    text={mascleGroup}
+                  />
+                )
+              })}
+          </div>
+        )}
       </div>
 
       {/* Section 03   */}
@@ -67,8 +84,9 @@ export default function Generator() {
           return (
             <Button
               onClick={() => setGoal(scheme)}
-
-              customClass={`py-3 hover:border-blue-600 capitalize ${scheme===goal?'border-blue-600':'border-blue-300'}`}
+              customClass={`py-3 hover:border-blue-600 capitalize border-2 ${
+                scheme === goal ? "border-blue-600" : "border-blue-300"
+              }`}
               key={schemesIndex}
               text={scheme.replaceAll("_", " ")}
             />
@@ -77,7 +95,7 @@ export default function Generator() {
       </div>
       <div className="flex justify-center items-center">
         <Button
-          customClass={"blueShadow px-8 py-4 border-blue-400"}
+          customClass={"blueShadow px-8 py-4 border-blue-400 border-2"}
           text="Formulate"
         />
       </div>

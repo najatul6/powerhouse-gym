@@ -20,7 +20,7 @@ export default function HeroContent() {
         <span className="text-blue-400 font-medium"> mass montrosity</span>,
         afflicted with severe body dismorphia, unable to fit through doors.
       </p>
-      <Button customClass={"blueShadow px-8 py-4 border-blue-400"} text="Accept & Begin" />
+      <Button customClass={"blueShadow px-8 py-4 border-blue-400 border-2"} text="Accept & Begin" />
     </div>
   );
 }
