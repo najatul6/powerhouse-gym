@@ -53,7 +53,7 @@ export default function Generator() {
                 setPoison(type);
               }}
               key={typeIndex}
-              className={`p-3 rounded-md border-solid bg-slate-950 font-semibold duration-200 hover:border-blue-600 border-2 ${
+              className={`py-3 px-4 rounded-md border-solid bg-slate-950 font-semibold duration-200 hover:border-blue-600 border-2 ${
                 type === poison ? "border-blue-600" : "border-blue-300"
               }`}
             >
@@ -117,7 +117,7 @@ export default function Generator() {
             <button
               onClick={() => setGoal(scheme)}
               key={schemesIndex}
-              className={`p-3 rounded-md border-solid bg-slate-950 font-semibold duration-200 hover:border-blue-600 border-2  ${
+              className={`py-3 px-4 rounded-md border-solid bg-slate-950 font-semibold duration-200 hover:border-blue-600 border-2  ${
                 scheme === goal ? "border-blue-600" : "border-blue-300"
               }`}
             >
