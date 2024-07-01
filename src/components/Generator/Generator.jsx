@@ -10,7 +10,7 @@ export default function Generator() {
   const [poison, setPoison] = useState("individual");
   const [muscles, setMuscles] = useState([]);
   const [goal, setGoal] = useState("strength_Power");
-  console.log(poison);
+
   function toggleModal() {
     setShowModal(!showModal);
   }
@@ -24,10 +24,14 @@ export default function Generator() {
     }
     if (poison !== "individual") {
       setMuscles([muscleGroup]);
+      setShowModal(false);
       return;
     }
 
     setMuscles([...muscles, muscleGroup]);
+    if (muscles.length === 2) {
+      setShowModal(false);
+    }
   }
   return (
     <SectionWrapper
@@ -46,7 +50,6 @@ export default function Generator() {
             <button
               onClick={() => {
                 setPoison(type);
-                console.log(poison);
               }}
               key={typeIndex}
               className={`p-3 rounded-md border-solid bg-slate-950 font-semibold duration-200 hover:border-blue-600 border-2 ${
@@ -72,7 +75,7 @@ export default function Generator() {
             showModal && "border-b-2"
           }`}
         >
-          <p>Select muscle groups</p>
+          <p className={`${muscles.length>0 && "uppercase"}`}>{muscles.length===0?"Select muscle groups":muscles.join(',')}</p>
           <IoCaretDown className="absolute right-3 top-1/2 -translate-y-1/2" />
         </button>
         {showModal && (
@@ -87,13 +90,14 @@ export default function Generator() {
                     updateMuscles(muscleGroup);
                   }}
                   key={muscleGroupIndex}
-                  className={`py-3 hover:text-blue-400 duration-200 capitalize ${
-                    muscles.includes(muscleGroup) ? "text-blue-400" : " "
+                  className={`py-3 hover:text-blue-600 duration-200 capitalize ${
+                    muscles.includes(muscleGroup)
+                      ? "text-blue-600 underline"
+                      : " "
                   }`}
                 >
-                  <p>{muscleGroup}</p>
+                  <p className="uppercase">{muscleGroup}</p>
                 </button>
-                
               );
             })}
           </div>
