@@ -5,18 +5,23 @@ import Button from "../Shared/Button/Button";
 import Title from "../Shared/Header/Title";
 import { useState } from "react";
 
-export default function Generator() {
+export default function Generator({
+  poison,
+  setPoison,
+  muscles,
+  setMuscles,
+  goal,
+  setGoal,
+  updateWorkout
+}) {
   const [showModal, setShowModal] = useState(false);
-  const [poison, setPoison] = useState("individual");
-  const [muscles, setMuscles] = useState([]);
-  const [goal, setGoal] = useState("strength_Power");
 
   function toggleModal() {
     setShowModal(!showModal);
   }
   function updateMuscles(muscleGroup) {
-    if (muscles.includes(muscleGroup)) {
-      setMuscles(muscles.filter((val) => val !== muscleGroup));
+    if (muscles?.includes(muscleGroup)) {
+      setMuscles(muscles?.filter((val) => val !== muscleGroup));
       return;
     }
     if (muscles?.length > 2) {
@@ -29,7 +34,7 @@ export default function Generator() {
     }
 
     setMuscles([...muscles, muscleGroup]);
-    if (muscles.length === 2) {
+    if (muscles?.length === 2) {
       setShowModal(false);
     }
   }
@@ -49,7 +54,7 @@ export default function Generator() {
           return (
             <button
               onClick={() => {
-                setMuscles([])
+                setMuscles([]);
                 setPoison(type);
               }}
               key={typeIndex}
@@ -57,7 +62,7 @@ export default function Generator() {
                 type === poison ? "border-blue-600" : "border-blue-300"
               }`}
             >
-              <p className="capitalize">{type.replaceAll("_", " ")}</p>
+              <p className="capitalize">{type?.replaceAll("_", " ")}</p>
             </button>
           );
         })}
@@ -76,7 +81,11 @@ export default function Generator() {
             showModal && "border-b-2"
           }`}
         >
-          <p className="capitalize">{muscles.length===0?"Select muscle groups":muscles.join(',')}</p>
+          <p className="capitalize">
+            {muscles?.length === 0
+              ? "Select muscle groups"
+              : muscles?.join(",")}
+          </p>
           <IoCaretDown className="absolute right-3 top-1/2 -translate-y-1/2" />
         </button>
         {showModal && (
@@ -92,7 +101,7 @@ export default function Generator() {
                   }}
                   key={muscleGroupIndex}
                   className={`py-3 hover:text-blue-600 duration-200 capitalize ${
-                    muscles.includes(muscleGroup)
+                    muscles?.includes(muscleGroup)
                       ? "text-blue-600 underline"
                       : " "
                   }`}
@@ -111,7 +120,7 @@ export default function Generator() {
         title={"Become Juggernaut"}
         description={"Select your ultimate objective."}
       />
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {Object.keys(SCHEMES).map((scheme, schemesIndex) => {
           return (
             <button
@@ -126,9 +135,7 @@ export default function Generator() {
           );
         })}
       </div>
-        <Button
-          text="Formulate"
-        />
+      <Button fun={updateWorkout} text={"Formulate"} />
     </SectionWrapper>
   );
 }
