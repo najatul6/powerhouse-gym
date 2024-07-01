@@ -126,11 +126,9 @@ export default function Generator() {
           );
         })}
       </div>
-      <div className="flex justify-center items-center">
         <Button
           text="Formulate"
         />
-      </div>
     </SectionWrapper>
   );
 }
