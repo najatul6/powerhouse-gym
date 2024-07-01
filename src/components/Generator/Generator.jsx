@@ -10,21 +10,23 @@ export default function Generator() {
   const [poison, setPoison] = useState("individual");
   const [muscles, setMuscles] = useState([]);
   const [goal, setGoal] = useState("strength_Power");
+  console.log(poison);
   function toggleModal() {
     setShowModal(!showModal);
   }
   function updateMuscles(muscleGroup) {
-    if (muscles?.length > 2) {
-      return;
-    }
-    if (poison !== 'individual') {
-      setMuscles([muscleGroup]);
-      return;
-    }
     if (muscles.includes(muscleGroup)) {
       setMuscles(muscles.filter((val) => val !== muscleGroup));
       return;
     }
+    if (muscles?.length > 2) {
+      return;
+    }
+    if (poison !== "individual") {
+      setMuscles([muscleGroup]);
+      return;
+    }
+
     setMuscles([...muscles, muscleGroup]);
   }
   return (
@@ -41,14 +43,18 @@ export default function Generator() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {Object.keys(WORKOUTS).map((type, typeIndex) => {
           return (
-            <Button
-              onClick={() => setPoison(type)}
-              customClass={`p-3 hover:border-blue-600 capitalize border-2 ${
+            <button
+              onClick={() => {
+                setPoison(type);
+                console.log(poison);
+              }}
+              key={typeIndex}
+              className={`p-3 rounded-md border-solid bg-slate-950 font-semibold duration-200 hover:border-blue-600 border-2 ${
                 type === poison ? "border-blue-600" : "border-blue-300"
               }`}
-              key={typeIndex}
-              text={type.replaceAll("_", " ")}
-            />
+            >
+              <p className="capitalize">{type.replaceAll("_", " ")}</p>
+            </button>
           );
         })}
       </div>
@@ -76,16 +82,18 @@ export default function Generator() {
               : Object.keys(WORKOUTS[poison])
             ).map((muscleGroup, muscleGroupIndex) => {
               return (
-                <Button
+                <button
                   onClick={() => {
-
+                    updateMuscles(muscleGroup);
                   }}
-                  // customClass={`py-3 hover:text-blue-400 duration-200 capitalize ${
-                  //   muscles.includes(muscleGroup) ? "text-blue-400" : " "
-                  // }`}
                   key={muscleGroupIndex}
-                  text={muscleGroup}
-                />
+                  className={`py-3 hover:text-blue-400 duration-200 capitalize ${
+                    muscles.includes(muscleGroup) ? "text-blue-400" : " "
+                  }`}
+                >
+                  <p>{muscleGroup}</p>
+                </button>
+                
               );
             })}
           </div>
@@ -101,14 +109,15 @@ export default function Generator() {
       <div className="grid grid-cols-3 gap-4">
         {Object.keys(SCHEMES).map((scheme, schemesIndex) => {
           return (
-            <Button
+            <button
               onClick={() => setGoal(scheme)}
-              customClass={`py-3 hover:border-blue-600 capitalize border-2 ${
+              key={schemesIndex}
+              className={`p-3 rounded-md border-solid bg-slate-950 font-semibold duration-200 hover:border-blue-600 border-2  ${
                 scheme === goal ? "border-blue-600" : "border-blue-300"
               }`}
-              key={schemesIndex}
-              text={scheme.replaceAll("_", " ")}
-            />
+            >
+              <p className="capitalize">{scheme.replaceAll("_", " ")}</p>
+            </button>
           );
         })}
       </div>
