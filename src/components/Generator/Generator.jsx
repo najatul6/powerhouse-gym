@@ -17,7 +17,7 @@ export default function Generator() {
     if (muscles?.length > 2) {
       return;
     }
-    if (poison !== "individual") {
+    if (poison !== 'individual') {
       setMuscles([muscleGroup]);
       return;
     }
@@ -78,7 +78,7 @@ export default function Generator() {
               return (
                 <Button
                   onClick={() => {
-                    
+
                   }}
                   // customClass={`py-3 hover:text-blue-400 duration-200 capitalize ${
                   //   muscles.includes(muscleGroup) ? "text-blue-400" : " "
