@@ -49,6 +49,7 @@ export default function Generator() {
           return (
             <button
               onClick={() => {
+                setMuscles([])
                 setPoison(type);
               }}
               key={typeIndex}
@@ -75,7 +76,7 @@ export default function Generator() {
             showModal && "border-b-2"
           }`}
         >
-          <p className={`${muscles.length>0 && "uppercase"}`}>{muscles.length===0?"Select muscle groups":muscles.join(',')}</p>
+          <p className="capitalize">{muscles.length===0?"Select muscle groups":muscles.join(',')}</p>
           <IoCaretDown className="absolute right-3 top-1/2 -translate-y-1/2" />
         </button>
         {showModal && (
@@ -127,7 +128,6 @@ export default function Generator() {
       </div>
       <div className="flex justify-center items-center">
         <Button
-          customClass={"blueShadow px-8 py-4 border-blue-400 border-2"}
           text="Formulate"
         />
       </div>
