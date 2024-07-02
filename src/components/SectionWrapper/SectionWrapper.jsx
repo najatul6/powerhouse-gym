@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 export default function SectionWrapper({children,header,title}) {
   return (
@@ -18,3 +19,9 @@ export default function SectionWrapper({children,header,title}) {
     </section>
   )
 }
+
+SectionWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+  header: PropTypes.string.isRequired,
+  title: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
