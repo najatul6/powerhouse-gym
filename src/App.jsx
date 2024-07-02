@@ -15,8 +15,9 @@ function App() {
       return;
     }
     let newWorkout = generateWorkOut({poison,muscles,goal})
-    console.log(newWorkout);
+    
     setWorkout(newWorkout)
+    window.location.href='#workout'
   }
 
   return (
@@ -33,6 +34,9 @@ function App() {
       updateWorkout={updateWorkout}
       />
       {workout && <WorkOut workout={workout}/>}
+      <footer className="mt-10 border-t-2 border-slate-400 flex justify-center items-center ">
+       <p className="py-2 text-sm"> Powered by Powerhouse Gym</p>
+      </footer>
     </main>
   );
 }

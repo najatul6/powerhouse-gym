@@ -20,6 +20,15 @@ export default function ExerciseCard({ exercise, i }) {
         <h3 className="text-slate-400 text-sm">Muscle Group</h3>
         <p className="capitalize">{exercise?.muscles.join(" & ")}</p>
       </div>
+      <div className="flex flex-col gap-2 rounded bg-slate-950">
+{exercise.description.split('___').map((val)=>{
+    return(
+        <div className="text-sm">
+            {val}
+        </div>
+    )
+})}
+      </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 sm:place-items-start gap-2">
         {["reps", "rest", "tempo"].map((info) => {
           return (

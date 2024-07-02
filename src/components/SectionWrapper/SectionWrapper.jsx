@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-export default function SectionWrapper({children,header,title}) {
+export default function SectionWrapper({children,header,title,id}) {
   return (
-    <section className="min-h-screen flex flex-col gap-10">
+    <section id={id} className="min-h-screen flex flex-col gap-10">
         <div className="bg-slate-950 py-10 flex flex-col gap-4 justify-center items-center p-4">
             <p className="uppercase font-medium">
                 {header}

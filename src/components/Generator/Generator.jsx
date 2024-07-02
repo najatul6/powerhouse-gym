@@ -40,6 +40,7 @@ export default function Generator({
   }
   return (
     <SectionWrapper
+    id={'generate'}
       header={"Generate your work"}
       title={["It's", "huse", "O'Clock"]}
     >
