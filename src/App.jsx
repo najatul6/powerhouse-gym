@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Generator from "./components/Generator/Generator";
 import Header from "./components/Header/Header";
-import WorkOur from "./components/WorkOut/WorkOur";
 import { generateWorkOut } from "./utils/functions";
+import WorkOut from "./components/WorkOut/WorkOut";
 
 function App() {
   const [workout, setWorkout] = useState(null);
@@ -14,7 +14,8 @@ function App() {
     if(muscles?.length < 1){
       return;
     }
-    let newWorkout = generateWorkOut(poison,muscles,goal)
+    let newWorkout = generateWorkOut({poison,muscles,goal})
+    console.log(newWorkout);
     setWorkout(newWorkout)
   }
 
@@ -31,7 +32,7 @@ function App() {
       setGoal={setGoal}
       updateWorkout={updateWorkout}
       />
-      {workout && <WorkOur workout={workout}/>}
+      {workout && <WorkOut workout={workout}/>}
     </main>
   );
 }
