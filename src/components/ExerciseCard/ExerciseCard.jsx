@@ -1,4 +1,10 @@
+import { useState } from "react";
+
 export default function ExerciseCard({ exercise, i }) {
+  const [setsCompleted, setSetsCompleted] = useState(0);
+  function handleSetIncrement() {
+    setSetsCompleted((setsCompleted + 1) % 6);
+  }
   return (
     <div className="flex flex-col gap-4 bg-slate-950 p-4 rounded-md sm:flex-wrap">
       <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-x-4">
@@ -29,8 +35,9 @@ export default function ExerciseCard({ exercise, i }) {
           );
         })}
 
-        <button className="flex flex-col p-2 rounded border-[1.5px] duration-200 border-solid border-blue-900 hover:border-blue-600">
-            Start Over
+        <button onClick={handleSetIncrement} className="flex flex-col p-2 rounded border-[1.5px] duration-200 border-solid border-blue-900 hover:border-blue-600">
+          <h3 className="text-sm capitalize text-slate-400">Sets completed</h3>
+          <p className="font-medium">{setsCompleted} / 5</p>
         </button>
       </div>
     </div>
